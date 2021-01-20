@@ -1,20 +1,55 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Moviles
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label>Título</ion-label>
+    <ion-input [(ngModel)]="movilEditando.titulo"></ion-input>
+  </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-label>Descripción</ion-label>
+    <ion-input [(ngModel)]="movilEditando.descripcion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Precio</ion-label>
+    <ion-input [(ngModel)]="movilEditando.precio"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Fecha Salida</ion-label>
+    <ion-input [(ngModel)]="movilEditando.fecha"></ion-input>
+  </ion-item>
+  <ion-list>
+    <ion-item 
+    *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="clicBotonInsertar()">Añadir movil</ion-button> 
+  <ion-button (click)="clicBotonBorrar()">Borrar Movil</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
+  
+  
 </ion-content>
+
+<h1>LISTA DE Moviles</h1>
+  <ion-list>
+    <ion-item *ngFor="let documentMovil of arrayColeccionMoviles">
+      <ion-grid>
+        <ion-row>
+          <h2>{{documentMovil.data.titulo}}</h2>
+        </ion-row>
+        <ion-row>
+          <p>{{documentMovil.data.descripcion}}</p>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  
