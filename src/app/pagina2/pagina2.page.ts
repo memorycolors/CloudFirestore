@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { RouteConfigLoadEnd, Router } from '@angular/router';
+import { ActivatedRoute, RouteConfigLoadEnd, Router } from '@angular/router';
 
 
 @Component({
@@ -8,16 +8,16 @@ import { RouteConfigLoadEnd, Router } from '@angular/router';
   styleUrls: ['./pagina2.page.scss'],
 })
 export class Pagina2Page implements OnInit {
-
-
-
-  constructor(private router: Router){
-   }
-   routingViaAngular(){
-     this.router.navigate(['/pagina2']);
+argumentos=null
+  constructor(private router: Router){}
+   
+  
+  routingViaAngular(){
+      this.router.navigate(['/pagina2',]);
    }
 
   ngOnInit() {
+    
   }
 
 }
