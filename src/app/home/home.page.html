@@ -26,22 +26,17 @@
     <ion-label>Fecha Salida</ion-label>
     <ion-input [(ngModel)]="movilEditando.fecha"></ion-input>
   </ion-item>
-  <ion-list>
-    <ion-item 
-    *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
-    </ion-item>
-  </ion-list>
-
-  <ion-button (click)="clicBotonInsertar()">Añadir movil</ion-button> 
-  <ion-button (click)="clicBotonBorrar()">Borrar Movil</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
   
+
+  <ion-button (click)="clicBotonInsertar()">Añadir Móvil</ion-button> 
+  <ion-button (click)="clicBotonBorrar()">Borrar Móvil</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Móvil</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Móvil</ion-button>
   
 </ion-content>
-
-<h1>LISTA DE Moviles</h1>
+<h1>LISTA DE MOVILES</h1>
   <ion-list>
-    <ion-item *ngFor="let documentMovil of arrayColeccionMoviles">
+    <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
       <ion-grid>
         <ion-row>
           <h2>{{documentMovil.data.titulo}}</h2>
@@ -52,4 +47,10 @@
       </ion-grid>
     </ion-item>
   </ion-list>
+<ion-footer>
+  <IonToolbar>
+    <ionic-title>Esto es el footer</ionic-title>
+  </IonToolbar>
+</ion-footer>
+
   
