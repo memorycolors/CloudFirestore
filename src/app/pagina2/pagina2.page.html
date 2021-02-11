@@ -1,12 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>pagina2</ion-title>
+    <ion-title>Pagina 2</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
-  <ion-button expand="full" color="success" (click)="routingViaAngular()">Navegacion con Router</ion-button>
+<ion-content [fullscreen]="true" >
+  <strong> ID del movil es:</strong> {{ id }}
+  <ion-item>
+    <ion-label>Titulo:  </ion-label>
+    <ion-input [(ngModel)]="movilEditando.titulo"></ion-input>
+  </ion-item>
   
+  <ion-item>
+    <ion-label>Descripcion : </ion-label>
+    <ion-input [(ngModel)]="movilEditando.descripcion"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Precio : </ion-label>
+    <ion-input [(ngModel)]="movilEditando.precio"></ion-input>
+  </ion-item>
 
+  <ion-item>
+    <ion-label>Fecha Salida : </ion-label>
+    <ion-input [(ngModel)]="movilEditando.fecha"></ion-input>
+  </ion-item>
+
+  <ion-button (click)="clicBotonBorrar()">Borrar movil</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
+  <ion-button (click)="clicBotonInsertar()">Insertar Movil</ion-button>
+  
 </ion-content>
+
+  

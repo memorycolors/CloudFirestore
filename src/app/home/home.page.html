@@ -8,34 +8,35 @@
 
 <ion-content [fullscreen]="true">
   <ion-item>
-    <ion-label>Título</ion-label>
+    <ion-label>Título : </ion-label>
     <ion-input [(ngModel)]="movilEditando.titulo"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Descripción</ion-label>
+    <ion-label>Descripción :</ion-label>
     <ion-input [(ngModel)]="movilEditando.descripcion"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Precio</ion-label>
+    <ion-label>Precio :</ion-label>
     <ion-input [(ngModel)]="movilEditando.precio"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Fecha Salida</ion-label>
+    <ion-label>Fecha Salida : </ion-label>
     <ion-input [(ngModel)]="movilEditando.fecha"></ion-input>
   </ion-item>
   
 
   <ion-button (click)="clicBotonInsertar()">Añadir Móvil</ion-button> 
   <ion-button (click)="clicBotonBorrar()">Borrar Móvil</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar Móvil</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar Móvil</ion-button>
+  <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
+ 
   
 </ion-content>
 <h1>LISTA DE MOVILES</h1>
   <ion-list>
+    
     <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
       <ion-grid>
         <ion-row>
@@ -46,11 +47,12 @@
         </ion-row>
       </ion-grid>
     </ion-item>
+
   </ion-list>
 <ion-footer>
-  <IonToolbar>
-    <ionic-title>Esto es el footer</ionic-title>
-  </IonToolbar>
+    <ion-button (click)="Home()">Home</ion-button> 
+  
 </ion-footer>
+
 
   

@@ -6,6 +6,9 @@ import {AngularFirestore} from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class FirestoreService {
+  consultaPorId(arg0: string, id: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private angularFIrestore: AngularFirestore) { }
 
@@ -21,4 +24,8 @@ export class FirestoreService {
   public actualizar(coleccion, documentId, datos) {
     return this.angularFIrestore.collection(coleccion).doc(documentId).set(datos);
    }
+   public consultarPorId(coleccion, documentId) {
+    return this.angularFIrestore.collection(coleccion).doc(documentId).snapshotChanges();
+  }
 }
+

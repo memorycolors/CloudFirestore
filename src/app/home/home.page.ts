@@ -23,6 +23,9 @@ export class HomePage {
     this.idMovilSelec = movilSelec.id;
     this.movilEditando.titulo = movilSelec.data.titulo;
     this.movilEditando.descripcion = movilSelec.data.descripcion;
+    this.movilEditando.precio = movilSelec.data.precio;
+    this.movilEditando.fechasalida = movilSelec.data.fechasalida;
+
   }
 
   constructor(private firestoreService: FirestoreService) {
@@ -44,7 +47,7 @@ export class HomePage {
     });
   }
   clicBotonBorrar() {
-    this.firestoreService.borrar("tareas", this.idMovilSelec).then(() => {
+    this.firestoreService.borrar("moviles", this.idMovilSelec).then(() => {
       // Actualizar la lista completa
       this.obtenerListaMoviles();
       // Limpiar datos de pantalla
@@ -52,7 +55,7 @@ export class HomePage {
     })
   }
   clicBotonModificar() {
-    this.firestoreService.actualizar("tareas", this.idMovilSelec, this.movilEditando).then(() => {
+    this.firestoreService.actualizar("moviles", this.idMovilSelec, this.movilEditando).then(() => {
       // Actualizar la lista completa
       this.obtenerListaMoviles();
       // Limpiar datos de pantalla
