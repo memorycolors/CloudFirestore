@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Movil } from '../movil';
 import {FirestoreService} from '../firestore.service';
-
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -11,12 +11,15 @@ import {FirestoreService} from '../firestore.service';
 export class HomePage {
 
   movilEditando: Movil;
+
+  idMovilSelec: string;
+
   arrayColeccionMoviles: any = [{
     id: "",
     data: {} as Movil
    }];
 
-  idMovilSelec:string;
+  
   selecMovil(movilSelec) {
     console.log("Tarea seleccionada: ");
     console.log(movilSelec);
@@ -28,7 +31,7 @@ export class HomePage {
 
   }
 
-  constructor(private firestoreService: FirestoreService) {
+  constructor(private firestoreService: FirestoreService,private router:Router) {
     // Crear un movil vacio al empezar 
     this.movilEditando = {} as Movil;
     this.obtenerListaMoviles();
@@ -62,7 +65,9 @@ export class HomePage {
       this.movilEditando = {} as Movil;
     })
   }
-
+navigateToMovil(){
+  this.router.navigate(["/pagina2/" , this.idMovilSelec])
+}
 
 
   obtenerListaMoviles(){
@@ -77,4 +82,5 @@ export class HomePage {
     });
   
   }
+  
 }
