@@ -28,24 +28,28 @@
 
 ion-footer{
   //Para minimo de pantalla 
-  @media screen and (max-width: 500px ) and (min-width: 300px){
-  ion-button.botoninfo{
+  @media screen and (max-width: 500px ) and (min-width: 100px){
+  ion-button.botones{
     display: none;
+    
+  
   }
-  ion-icon.iconinfo{
-    width: 50px;
-    height: 50px;
+  @at-root.iconos{
+    right: 0;
+    bottom: 0;
+    margin: 25px;;
+    text-align: center; 
     
   }
    
 
    }
-   //Para máximo de pantalla
+   //Para máximo de pantalla (landscape)
    @media screen and (min-width: 500px ) {
-    ion-icon.iconinfo{
+    ion-button.iconos{
       width: 50px;
       height: 50px;
-      
+      display:none;
     }
      
   
