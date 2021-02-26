@@ -1,12 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Moviles
-    </ion-title>
+    <ion-title>Moviles</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
 
   <ion-item>
     <ion-label>Título : </ion-label>
@@ -34,11 +32,8 @@
   <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
 
 
-
-</ion-content>
-
 <ion-list>
-  <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
+  <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)+ navigateToMovil()">
     <ion-grid>
       <ion-row>
         <h2>{{documentMovil.data.titulo}}</h2>
@@ -50,27 +45,29 @@
   </ion-item>
 </ion-list>
 
+</ion-content>
+
 <ion-footer>
   <ion-grid>
     <!--boton informacion -->
     <ion-button href="/informacion" style="padding: 5px;" class="botones">Informacion General</ion-button>
 
-    <ion-button href="/informacion" class="iconos" >
-      <ion-icon name="information-circle-outline"  ></ion-icon>
+    <ion-button href="/informacion" class="iconos">
+      <ion-icon name="information-circle-outline"></ion-icon>
     </ion-button>
 
     <!--boton inicio -->
     <ion-button href="/home" style="padding: 5px;" class="botones">Inicio</ion-button>
-    
-    <ion-button href="/home" class="iconos " >  
-      <ion-icon  name="home-outline"  ></ion-icon>
+
+    <ion-button href="/home" class="iconos ">
+      <ion-icon name="home-outline"></ion-icon>
     </ion-button>
 
     <!--boton novedades  -->
     <ion-button href="/novedades" style="padding: 5px; " class="botones">Novedades</ion-button>
 
-    <ion-button href="/novedades" class="iconos" >
-      <ion-icon name="newspaper-outline"  ></ion-icon>
+    <ion-button href="/novedades" class="iconos">
+      <ion-icon name="newspaper-outline"></ion-icon>
     </ion-button>
 
   </ion-grid>

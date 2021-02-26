@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { Pagina2Page } from './pagina2.page';
 
 const routes: Routes = [
-  {path: '', component: Pagina2Page },
+  {path: '', component: Pagina2Page }
  
 ];
 

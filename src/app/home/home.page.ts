@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Movil } from '../movil';
-import {FirestoreService} from '../firestore.service';
+import { FirestoreService } from '../firestore.service';
 import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,38 @@ export class HomePage {
   arrayColeccionMoviles: any = [{
     id: "",
     data: {} as Movil
-   }];
+  }];
+
 
   
+
+  constructor(
+    private firestoreService: FirestoreService,
+    private router: Router,)
+    {
+
+    // Crear un movil vacio al empezar 
+    this.movilEditando = {} as Movil;
+    this.obtenerListaMoviles();
+  }
+
+  navigateToMovil() {
+    this.router.navigate(["/pagina2/", this.idMovilSelec]);
+  }
+
+  obtenerListaMoviles() {
+    this.firestoreService.consultar("moviles").subscribe((resultadoConsultaMoviles) => {
+      this.arrayColeccionMoviles = [];
+      resultadoConsultaMoviles.forEach((datosMovil: any) => {
+        this.arrayColeccionMoviles.push({
+          id: datosMovil.payload.doc.id,
+          data: datosMovil.payload.doc.data()
+        });
+      })
+    });
+
+  }
+
   selecMovil(movilSelec) {
     console.log("Tarea seleccionada: ");
     console.log(movilSelec);
@@ -30,32 +60,26 @@ export class HomePage {
     this.movilEditando.fechasalida = movilSelec.data.fechasalida;
 
   }
-
-  constructor(private firestoreService: FirestoreService,private router:Router) {
-    // Crear un movil vacio al empezar 
-    this.movilEditando = {} as Movil;
-    this.obtenerListaMoviles();
-  }
-
-  
-  
   clicBotonInsertar() {
     this.firestoreService.insertar("moviles", this.movilEditando)
-    .then(() => {
-      console.log("Movil creado con exito")
+      .then(() => {
+        console.log("Movil creado con exito")
         // Limpiar el contenido de los moviles que se estaban editando 
-      this.movilEditando = {} as Movil;
-    }, (error) => {
-      console.error(error);
-    });
+        this.movilEditando = {} as Movil;
+      }, (error) => {
+        console.error(error);
+      });
   }
+
   clicBotonBorrar() {
     this.firestoreService.borrar("moviles", this.idMovilSelec).then(() => {
       // Actualizar la lista completa
       this.obtenerListaMoviles();
       // Limpiar datos de pantalla
       this.movilEditando = {} as Movil;
-    })
+
+    });
+
   }
   clicBotonModificar() {
     this.firestoreService.actualizar("moviles", this.idMovilSelec, this.movilEditando).then(() => {
@@ -63,24 +87,11 @@ export class HomePage {
       this.obtenerListaMoviles();
       // Limpiar datos de pantalla
       this.movilEditando = {} as Movil;
-    })
-  }
-navigateToMovil(){
-  this.router.navigate(["/pagina2/" , this.idMovilSelec])
-}
-
-
-  obtenerListaMoviles(){
-    this.firestoreService.consultar("moviles").subscribe((resultadoConsultaMoviles) => {
-      this.arrayColeccionMoviles = [];
-      resultadoConsultaMoviles.forEach((datosMovil: any) => {
-        this.arrayColeccionMoviles.push({
-          id: datosMovil.payload.doc.id,
-          data: datosMovil.payload.doc.data()
-        });
-      })
     });
-  
   }
   
+
+
+  
+
 }
