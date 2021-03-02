@@ -55,38 +55,12 @@ export class Pagina2Page implements OnInit {
 
     })
   }
-  async clicAlertConfirm() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Confirme',
-      message: '¿Desea borrar a ' + this.document.data.nombre + "?",
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-            this.router.navigate(["/home/"]);
-
-          }
-        }, {
-          text: 'OK',
-          handler: () => {
-            this.firestoreService.borrar("moviles", this.id).then(() => {
-              // Limpiar datos de pantalla
-              this.document.data = {} as Movil;
-              this.router.navigate(["/home/"]);
-              console.log('¿Seguro que desea borrar a' + this.document.data.nombre);
-            })
-          }
-
-        }
-
-      ]
-    });
-
-    await alert.present();
+  clicBotonBorrar() {
+    this.firestoreService.borrar("moviles", this.id).then(() => {
+      // Limpiar datos de pantalla
+      this.document.data = {} as Movil;
+      this.router.navigate(["/home/"]);
+    })
   }
 
   clicBotonInsertar() {
