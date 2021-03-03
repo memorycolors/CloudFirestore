@@ -67,7 +67,6 @@ export class Pagina2Page implements OnInit {
     this.firestoreService.insertar("moviles", this.document.data).then(() => {
       console.log('movil creado correctamente!');
       this.document.data = {} as Movil;
-      this.document.data.repetidor = false;
       this.router.navigate(["/home/"]);
     }, (error) => {
       console.error(error);

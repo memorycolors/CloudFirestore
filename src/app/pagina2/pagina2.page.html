@@ -28,22 +28,10 @@
     <ion-input [(ngModel)]="document.data.fecha"></ion-input>
   </ion-item>
 
-  <ion-button (click)="clicBotonBorrar()"class="alerta">Borrar movil</ion-button>
-  <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
-  <ion-button (click)="clicBotonInsertar()">Insertar Movil</ion-button>
+  <ion-button (click)="clicBotonBorrar()"*ngIf="id!='nuevo'">Borrar Móvil</ion-button>
+  <ion-button (click)="clicBotonModificar()"*ngIf="id!='nuevo'">Guardar Movil</ion-button>
+  <ion-button (click)="clicBotonInsertar()"*ngIf="id=='nuevo'">Insertar Movil</ion-button>
 
-  <ion-list>
-    <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)">
-      <ion-grid>
-        <ion-row>
-          <h2>{{documentMovil.data.titulo}}</h2>
-        </ion-row>
-        <ion-row>
-          <p>{{documentMovil.data.descripcion}}</p>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list>
 
 <ion-footer>
   <ion-grid>
