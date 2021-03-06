@@ -1,7 +1,8 @@
 {
   "name": "cloudfirestore",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

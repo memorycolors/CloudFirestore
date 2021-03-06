@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { FirestoreService } from '../firestore.service';
 import { Router } from "@angular/router";
 import { AlertController } from '@ionic/angular';
+
 import { Movil } from '../movil';
 
 @Component({
@@ -55,28 +56,12 @@ export class Pagina2Page implements OnInit {
 
     })
   }
-  // clicBotonBorrar() {
-  //   this.firestoreService.borrar("moviles", this.id).then(() => {
-  //     // Limpiar datos de pantalla
-  //     this.document.data = {} as Movil;
-  //     this.router.navigate(["/home/"]);
-  //   })
-  // }
   
-  clicBotonInsertar() {
-    this.firestoreService.insertar("moviles", this.document.data).then(() => {
-      console.log('movil creado correctamente!');
-      this.document.data = {} as Movil;
-      this.router.navigate(["/home/"]);
-    }, (error) => {
-      console.error(error);
-    });
-  }
-  async clicAlertConfirm() {
+  async clicAlertConfirmar() {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Confirme',
-      message: '¿Desea borrar a '+ this.document.data.nombre+ "?",
+     // cssClass: 'my-custom-class',
+      header: 'Confirmar Borrado',
+      message: '¿Desea borrar el movil ?',
       buttons: [
         {
           text: 'Cancel',
@@ -87,10 +72,11 @@ export class Pagina2Page implements OnInit {
             this.router.navigate(["/home/"]);
             
           }
-        }, {
+        }, 
+        {
           text: 'OK',
           handler: () => {
-            this.firestoreService.borrar("movil", this.id).then(() => {
+            this.firestoreService.borrar("moviles", this.id).then(() => {
               // Limpiar datos de pantalla
               this.document.data = {} as Movil;
               this.router.navigate(["/home/"]);
@@ -102,8 +88,19 @@ export class Pagina2Page implements OnInit {
     
       ]
     });
-
+    await alert.present();
  }
+  
+  clicBotonInsertar() {
+    this.firestoreService.insertar("moviles", this.document.data).then(() => {
+      console.log('movil creado correctamente!');
+      this.document.data = {} as Movil;
+      this.router.navigate(["/home/"]);
+    }, (error) => {
+      console.error(error);
+    });
+  }
+  
 
 }
 

@@ -6,7 +6,7 @@
 
 <ion-content >
 
-  <ion-item>
+  <!-- <ion-item>
     <ion-label>Título : </ion-label>
     <ion-input [(ngModel)]="movilEditando.titulo"></ion-input>
   </ion-item>
@@ -30,15 +30,16 @@
   <ion-button (click)="clicBotonInsertar()">Añadir Móvil</ion-button>
   <ion-button (click)="clicBotonBorrar()">Borrar Móvil</ion-button>
   <ion-button (click)="clicBotonModificar()">Modificar Movil</ion-button>
-
+-->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" padding>
     <ion-fab-button (click)="navigateToAdd()">
       <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
-  </ion-fab>
+  </ion-fab> 
 
 
 <ion-list>
+  <h1>Lista de Moviles</h1>
   <ion-item *ngFor="let documentMovil of arrayColeccionMoviles" (click)="selecMovil(documentMovil)+ navigateToMovil()">
     <ion-grid>
       <ion-row>

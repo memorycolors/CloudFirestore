@@ -5,7 +5,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
+<ion-content >
   <br>
   <ion-item>
 
@@ -28,7 +28,7 @@
     <ion-input [(ngModel)]="document.data.fecha"></ion-input>
   </ion-item>
 
-  <ion-button (click)="clicAlertConfirm()"*ngIf="id!='nuevo'">Borrar Móvil</ion-button>
+  <ion-button (click)="clicAlertConfirmar()"*ngIf="id!='nuevo'">Borrar Móvil</ion-button>
   <ion-button (click)="clicBotonModificar()"*ngIf="id!='nuevo'">Guardar Movil</ion-button>
   <ion-button (click)="clicBotonInsertar()"*ngIf="id=='nuevo'">Insertar Movil</ion-button>
 
